@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css\index.css">
+<script src="js\jquery-3.2.1.min.js"></script>
+<script src="js\index.js"></script>
+<title>Title of the document</title>
+</head>
+<body>
+    <main id="mainContent" class="main-content">
+        <form id="passengerDetails" class="passenger-details" action="/server_api.php" method="post">
+            <section id="contactInformation" class="form-section">
+                <h3>Contact Information</h3>
+                <div class="form-row row">
+                    <div class="form-element col-3">
+                        <label class="form-label field" for="title">Title</label>
+                        <select id="title" name="title" class="form-input field">
+                            <option value="" selected>Select your title</option>
+                            <option value="Mr.">Mr.</option>
+                            <option value="Mrs.">Mrs.</option>
+                            <option value="Ms.">Ms.</option>
+                        </select>
+                    </div>
+                    <div class="form-element col-3">
+                        <label class="form-label field" for="firstName">
+                            <i class="glyphicon glyphicon-info-sign icon-info" title="Enter your first name"></i>
+                            First name
+                            <i class="glyphicon glyphicon-certificate icon-required"></i>
+                        </label>
+                        <input type="text" id="firstName" name="firstName" class="form-input field" required>
+                    </div>
+                    <div class="form-element col-3">
+                        <label class="form-label field" for="lastName">
+                            <i class="glyphicon glyphicon-info-sign icon-info" title="Enter your last name"></i>
+                            Last name
+                            <i class="glyphicon glyphicon-certificate icon-required"></i>
+                        </label>
+                        <input type="text" id="lastName" name="lastName" class="form-input field" required>
+                    </div>
+                    <div class="form-element col-3">
+                        <label class="form-label field" for="suffix">Suffix</label>
+                        <select id="suffix" name="suffix" class="form-input field" >
+                            <option value="" selected>Select your suffix</option>
+                            <option value="Jr.">Jr.</option>
+                            <option value="Sr.">Sr.</option>
+                            <option value="III">III</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row row">
+                    <div class="form-element col-3">
+                        <label class="form-label field" for="city">
+                            <i class="glyphicon glyphicon-info-sign icon-info" title="Enter your City name"></i>
+                            City
+                            <i class="glyphicon glyphicon-certificate icon-required"></i>
+                        </label>
+                        <input type="text" id="city" name="city" class="form-input field" required>
+                    </div>
+                    <div class="form-element col-3">
+                        <label class="form-label field" for="state">State<i class="glyphicon glyphicon-certificate icon-required"></i></label>
+                        <select class="form-input field" id="state" name="state" required>
+                            <option value="">Select a State</option>
+                            <option value="TX">Texas</option>
+                            <option value="CA">California</option>
+                            <option value="NY">New York</option>
+                        </select>
+                    </div>
+                    <div class="form-element col-3">
+                        <label class="form-label field" for="postalCode">Postal Code<i class="glyphicon glyphicon-certificate icon-required"></i></label>
+                        <input type="text" class="form-input field" id="postalCode" name="postalCode" required>
+                    </div>
+                </div>
+            </section>
+            <section id="seatInformation" class="form-section">
+                <div class="form-row row">
+                    <div class="form-element col-12 seat-table-container">
+                        <table id="seatTable" class="seat-table">
+                            <tr class="seat-table-row">
+                                <th class="seat-table-header">Class</th>
+                                <th class="seat-table-header">Seat count</th>
+                                <th class="seat-table-header">Seat pitch</th>
+                                <th class="seat-table-header">Seat width</th>
+                                <th class="seat-table-header">Wi-Fi</th>
+                                <th class="seat-table-header">Entertainment</th>
+                                <th class="seat-table-header">Power</th>
+                            </tr>
+                            <tr class="seat-table-row">
+                                <td class="seat-table-element">Business</td>
+                                <td class="seat-table-element">16</td>
+                                <td class="seat-table-element">lie-flat</td>
+                                <td class="seat-table-element">19"</td>
+                                <td class="seat-table-element"><i class="glyphicon glyphicon-ok icon-ok"></i></td>
+                                <td class="seat-table-element">Overhead video</td>
+                                <td class="seat-table-element"><i class="glyphicon glyphicon-ok icon-ok"></i></td>
+                            </tr>
+                            <tr class="seat-table-row">
+                                <td class="seat-table-element">Main Cabin Extra</td>
+                                <td class="seat-table-element">52</td>
+                                <td class="seat-table-element">36",bulkhead,exit rows</td>
+                                <td class="seat-table-element">16.6"</td>
+                                <td class="seat-table-element">Overhead video</td>
+                                <td class="seat-table-element">Overhead video</td>
+                                <td class="seat-table-element">Yes</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section id="passengerInformation" class="form-section">
+                <h3>Passenger Info</h3>
+                <section id="passengerInfoComponent" class="passenger-info-component">
+                    <div class="form-row row">
+                        <div class="form-element col-3">
+                            <button type="button" id="deletePassengerSection" class="button-link" onclick="deletePassengerInfoSection()">Delete Section</button>
+                        </div>
+                    </div>
+                    <div class="form-row row">
+                        <div class="form-element col-3">
+                            <label class="form-input field" for="numberOfPassengers">Number of Passengers<i class="glyphicon glyphicon-certificate icon-required"></i></label>
+                            <input type="text" id="numberOfPassengers" name="numberOfPassengers" class="form-input field" required>
+                        </div>
+                        <div class="form-element col-3">
+                            <label class="form-input field" for="travelClass">Class</label>
+                            <select id="travelClass" name="travelClass" class="form-input field" >
+                                    <option value="business" selected>Business/First</option>
+                                    <option value="economy">Economy</option>                                            
+                            </select>
+                        </div>
+                        <div class="form-element col-3">
+                            <label class="form-input field" for="ticketSource">How will you ticket</label>
+                            <select id="ticketSource" name="ticketSource" class="form-input field" >
+                                    <option value="agency" selected>Agency</option>
+                                    <option value="carrier">Carrier</option>                                            
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row row">
+                        <div class="form-element col-3">
+                            <label class="form-input field" for="recordLocator">
+                                <i class="glyphicon glyphicon-info-sign icon-info" title="Enter the Record locator"></i>
+                                Record locator
+                                <i class="glyphicon glyphicon-certificate icon-required"></i>
+                            </label>
+                            <input type="text" id="recordLocator" name="recordLocator" class="form-input field" style="text-transform:uppercase" onkeyup="transformToUpperCase()" maxlength="6" required>
+                        </div>
+                    </div>
+                    <div class="form-row row">
+                        <div class="form-element col-3">
+                            <label class="form-input field" for="flightNumber">
+                                <i class="glyphicon glyphicon-info-sign icon-info" title="Enter the flight number"></i>
+                                Flight Number
+                                <i class="glyphicon glyphicon-certificate icon-required"></i>
+                            </label>
+                            <input type="text" id="flightNumber" name="flightNumber" class="form-input field" style="text-transform:uppercase" onkeyup="transformToUpperCase()" maxlength="6" required>
+                        </div>
+                        <div class="form-element col-3">
+                            <label class="form-input field" for="flightDate">
+                                <i class="glyphicon glyphicon-info-sign icon-info" title="Enter the flight date"></i>
+                                Flight Date
+                                <i class="glyphicon glyphicon-certificate icon-required"></i>
+                            </label>
+                            <input type="date" id="flightDate" name="flightDate" class="form-input field" required>
+                        </div>
+                        <div class="form-element col-3">
+                            <label class="form-input field" for="origin">
+                                <i class="glyphicon glyphicon-info-sign icon-info" title="Enter the flight origin city/airport"></i>
+                                From
+                                <i class="glyphicon glyphicon-certificate icon-required"></i>
+                            </label>
+                            <input id="origin" name="origin" type="text" list="locations" class="form-input field" required>
+                        </div>
+                        <div class="form-element col-3">
+                            <label class="form-input field" for="destination">
+                                <i class="glyphicon glyphicon-info-sign icon-info" title="Enter the flight destination city/airport"></i>
+                                To
+                                <i class="glyphicon glyphicon-certificate icon-required"></i>
+                            </label>
+                            <input id="destination" name="destination" type="text" list="locations" class="form-input field" required>
+                        </div>
+                        <datalist id="locations">
+                            <option value="DFW">Dallas-Fortworth Intl</option>
+                            <option value="ORD">Chicago O'Hare</option>
+                            <option value="JFK">New York - John F Kennedy</option>
+                            <option value="LAX">Los Angeles Intl</option>
+                        </datalist>
+                    </div>
+                    <div class="form-row row">
+                        <div class="form-element col-3">
+                            <button type="button" id="createPassengerInfo" class="button-link" onclick="addPassengerInfoSection()">Add another section</button>
+                        </div>
+                    </div>
+                </section>                
+            </section>
+            <section id="commentSection" class="form-section">
+                <h3>Comments</h3>
+                <div class="form-row row">
+                    <div class="form-element col-12">
+                        <label class="form-input field" for="comment">Comments</label>
+                        <textarea id="comment" name="comment" class="textbox" placeholder="Please add comments here" maxlength="1500" onkeyup="textCounter()"></textarea>
+                        <label id="commentCounter" class="form-input field comment-counter">Characters remaining: 1500</label>
+                    </div>
+                </div>
+            </section>
+            <section id="buttonSection" class="form-section bottom-section">
+                <div class="form-row row">
+                    <div class="form-element col-12 button-container"  style="text-align: right;">
+                        <button type="button" id="cancelButton" class="footer-buttons cancel-button" value="Cancel">Cancel</button>
+                        <button type="submit" id="submitButton" class="footer-buttons submit-button" value="Submit">Submit</button>
+                    </div>
+                </div>
+            </section>
+        </form>
+    </main>
+</body>
